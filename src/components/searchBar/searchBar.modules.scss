@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.search_position {
+  position: absolute;
+  top: 65%;
+  left: 120px;
+}
+
+.img {
+  z-index: -1;
+}

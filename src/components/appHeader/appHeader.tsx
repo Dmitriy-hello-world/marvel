@@ -9,7 +9,7 @@ import './appHeader.modules.scss';
 
 export const AppHeader = () => {
   return (
-    <AppBar position="static">
+    <AppBar color="error" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <ApiIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
