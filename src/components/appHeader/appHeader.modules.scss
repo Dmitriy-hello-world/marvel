@@ -1,0 +1,16 @@
+.appHeader__button_active {
+  & button {
+    color: black;
+  }
+  text-decoration: none;
+}
+
+.appHeader__button {
+  color: white;
+  text-decoration: none;
+}
+
+.appHeader__logoLink {
+  text-decoration: none;
+  color: white;
+}

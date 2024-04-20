@@ -1,12 +1,12 @@
-import { Button } from '@mui/material';
-import AbcIcon from '@mui/icons-material/Abc';
+import { BrowserRouter } from 'react-router-dom';
+import RootRouter from './router/rootRouter';
+
 function App() {
   return (
     <>
-      <AbcIcon />
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
+      <BrowserRouter>
+        <RootRouter />
+      </BrowserRouter>
     </>
   );
 }
