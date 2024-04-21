@@ -4,11 +4,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { CharactersReducer } from '../components/charactersList/charactersSlice';
 import { controlsReducer } from '../components/controls/controlsSlice';
+import { characterReducer } from '../components/customModal/customModalSlice';
 
 export const store = configureStore({
   reducer: {
     characters: CharactersReducer,
     controls: controlsReducer,
+    modal: characterReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddlware) =>

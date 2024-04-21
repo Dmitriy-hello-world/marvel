@@ -4,13 +4,20 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Character } from '../../types/charactersTypes';
+import { useAppDispatch } from '../../app/store';
+import { setCharacter, setOpen } from '../customModal/customModalSlice';
 import './characterListItem.modules.scss';
 
 export const CharacterListItem = ({ character }: { character: Character }) => {
+  const dispatch = useAppDispatch();
   return (
     <Card
       className="card__wrapper"
       sx={{ width: '300px', background: '#ff4545' }}
+      onClick={() => {
+        dispatch(setCharacter(character));
+        dispatch(setOpen(true));
+      }}
     >
       <CardActionArea
         sx={{
