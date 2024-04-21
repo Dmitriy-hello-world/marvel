@@ -6,14 +6,21 @@ import ApiIcon from '@mui/icons-material/Api';
 import { Link, NavLink } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 import './appHeader.modules.scss';
+import { useState } from 'react';
 
 export const AppHeader = () => {
+  const [isActive, setIsActive] = useState(0);
+
   return (
     <AppBar color="error" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <ApiIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Link className="appHeader__logoLink" to="/">
+          <Link
+            className="appHeader__logoLink"
+            to="/marvel/"
+            onClick={() => setIsActive(0)}
+          >
             <Typography
               variant="h6"
               noWrap
@@ -33,9 +40,12 @@ export const AppHeader = () => {
           </Link>
           <Box sx={{ flexGrow: 1, display: 'flex', ml: '20px' }}>
             <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? 'appHeader__button_active' : 'appHeader__button'
+              to="/marvel/"
+              onClick={() => setIsActive(0)}
+              className={
+                isActive === 0
+                  ? 'appHeader__button_active'
+                  : 'appHeader__button'
               }
             >
               <Button
@@ -46,9 +56,12 @@ export const AppHeader = () => {
               </Button>
             </NavLink>
             <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive ? 'appHeader__button_active' : 'appHeader__button'
+              to="/marvel/about"
+              onClick={() => setIsActive(1)}
+              className={
+                isActive === 1
+                  ? 'appHeader__button_active'
+                  : 'appHeader__button'
               }
             >
               <Button

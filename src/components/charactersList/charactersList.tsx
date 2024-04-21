@@ -8,7 +8,7 @@ import './charactersList.modules.scss';
 export const CharacterList = () => {
   const dispatch = useAppDispatch();
   const [characters = [], { status, error, total = 0, page }] = useCharacters();
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     dispatch(setPage(value));
   };
 

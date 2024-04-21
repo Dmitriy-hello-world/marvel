@@ -7,10 +7,10 @@ import { NotFound } from '../pages/notFoundPage/notFoundPage';
 const RootRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route element={<HomePage />} path="/" />
-        <Route element={<AboutPage />} path="/about" />
-        <Route element={<NotFound />} path="*" />
+      <Route path="/marvel" element={<Layout />}>
+        <Route element={<HomePage />} path="/marvel/" />
+        <Route element={<AboutPage />} path="/marvel/about" />
+        <Route element={<NotFound />} path="/marvel/*" />
       </Route>
     </Routes>
   );

@@ -1,7 +1,7 @@
 import SearchIcon from '@mui/icons-material/Search';
 import { Box, TextField } from '@mui/material';
 import doctorImg from '../../assets/docs-bg.jpg';
-import marvelImg from '../../assets/marvel-logo.svg';
+import marvelImg from '../../assets/marvel_logo.png';
 import { useAppDispatch } from '../../app/store';
 import { setPage, setSearch } from '../controls/controlsSlice';
 import { useSelector } from 'react-redux';
@@ -44,8 +44,8 @@ export const SearchBar = () => {
           onChange={onHandleChange}
         />
       </Box>
-      <img src={marvelImg} alt="marvel logo" className="img__marvel" />
-      <img src={doctorImg} alt="doctor" className="img" />
+      <img src={`.${marvelImg}`} alt="marvel logo" className="img__marvel" />
+      <img src={`.${doctorImg}`} alt="doctor" className="img" />
     </div>
   );
 };

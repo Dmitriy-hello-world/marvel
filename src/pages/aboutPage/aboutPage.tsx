@@ -22,7 +22,7 @@ export const AboutPage = () => {
       <Box textAlign="center" mt={2} mb={2}>
         <Avatar
           alt="Dmytro Nykytenko"
-          src={attractivePhoto}
+          src={`.${attractivePhoto}`}
           sx={{ width: 200, height: 200, margin: '0 auto', marginBottom: 3 }}
         />
         <Typography variant="h3" gutterBottom>
