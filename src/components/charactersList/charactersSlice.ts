@@ -4,7 +4,13 @@ import { Extra, Status } from '../../types/reduxPropsTypes';
 
 export const loadCharacters = createAsyncThunk<
   { data: MarvelApiResponse },
-  number,
+  {
+    page: number;
+    search: {
+      previous: string;
+      current: string;
+    };
+  },
   {
     extra: Extra;
     state: { characters: CharactersSlice };
@@ -12,9 +18,15 @@ export const loadCharacters = createAsyncThunk<
   }
 >(
   '@@characters/load-characters',
-  async (offset, { extra: { client, api }, rejectWithValue }) => {
+  async ({ page, search }, { extra: { client, api }, rejectWithValue }) => {
     try {
-      return client.get(api.generateUrl(api.GET_CHARACTERS, offset));
+      if (search.current.length > 0) {
+        return client.get(
+          api.generateUrl(api.GET_CHARACTERS, page, search.current)
+        );
+      } else {
+        return client.get(api.generateUrl(api.GET_CHARACTERS, page, null));
+      }
     } catch (error) {
       if (error instanceof Error) {
         return rejectWithValue(error.message);

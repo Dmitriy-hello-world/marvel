@@ -2,10 +2,26 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Box, TextField } from '@mui/material';
 import doctorImg from '../../assets/docs-bg.jpg';
 import marvelImg from '../../assets/marvel-logo.svg';
+import { useAppDispatch } from '../../app/store';
+import { setPage, setSearch } from '../controls/controlsSlice';
+import { useSelector } from 'react-redux';
+import { selectControlInfo } from '../controls/controlsSelectors';
 import './searchBar.modules.scss';
 
 export const SearchBar = () => {
-  //   const [value, setValue] = useState('');
+  const dispatch = useAppDispatch();
+  const { search } = useSelector(selectControlInfo);
+  const onHandleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    dispatch(
+      setSearch({
+        previous: search.current,
+        current: e.target.value,
+      })
+    );
+    dispatch(setPage(1));
+  };
 
   return (
     <div className="wrapper">
@@ -24,6 +40,8 @@ export const SearchBar = () => {
           id="input-with-sx"
           label="Find character"
           variant="standard"
+          value={search.current}
+          onChange={onHandleChange}
         />
       </Box>
       <img src={marvelImg} alt="marvel logo" className="img__marvel" />

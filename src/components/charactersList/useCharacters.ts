@@ -9,7 +9,7 @@ import {
   selectAllCharacters,
   selectCharactersInfo,
 } from './charactersSelectors';
-import { selectCurrentPage } from '../controls/controlsSelectors';
+import { selectControlInfo } from '../controls/controlsSelectors';
 
 export const useCharacters = (): [
   Character[] | undefined,
@@ -24,11 +24,34 @@ export const useCharacters = (): [
   const characters = useSelector(selectAllCharacters);
 
   const { status, error, total } = useSelector(selectCharactersInfo);
-  const { page } = useSelector(selectCurrentPage);
+  const { page, search } = useSelector(selectControlInfo);
 
   useEffect(() => {
-    dispatch(loadCharacters((page - 1) * 20));
-  }, [total, dispatch, page]);
+    if (search.current.length > 0) {
+      if (search.current === search.previous) {
+        dispatch(
+          loadCharacters({
+            page: (page - 1) * 20,
+            search: { previous: search.previous, current: search.current },
+          })
+        );
+      } else {
+        dispatch(
+          loadCharacters({
+            page: (page - 1) * 20,
+            search: { previous: search.previous, current: search.current },
+          })
+        );
+      }
+    } else {
+      dispatch(
+        loadCharacters({
+          page: (page - 1) * 20,
+          search: { previous: search.previous, current: search.current },
+        })
+      );
+    }
+  }, [total, dispatch, page, search]);
 
   return [characters, { status, error, total, page }];
 };
