@@ -6,29 +6,29 @@ import { Character } from '../../types/charactersTypes';
 import { Status } from '../../types/reduxPropsTypes';
 import { loadCharacters } from './charactersSlice';
 import {
-  selectAllCountries,
+  selectAllCharacters,
   selectCharactersInfo,
 } from './charactersSelectors';
+import { selectCurrentPage } from '../controls/controlsSelectors';
 
 export const useCharacters = (): [
-  Character | undefined,
+  Character[] | undefined,
   {
     status: Status;
     error: string | null;
     total: number | undefined;
-    count: number | undefined;
+    page: number;
   },
 ] => {
   const dispatch = useAppDispatch();
-  const characters = useSelector(selectAllCountries);
+  const characters = useSelector(selectAllCharacters);
 
-  const { status, error, total, count } = useSelector(selectCharactersInfo);
+  const { status, error, total } = useSelector(selectCharactersInfo);
+  const { page } = useSelector(selectCurrentPage);
 
   useEffect(() => {
-    if (!total) {
-      dispatch(loadCharacters());
-    }
-  }, [total, dispatch]);
+    dispatch(loadCharacters((page - 1) * 20));
+  }, [total, dispatch, page]);
 
-  return [characters, { status, error, total, count }];
+  return [characters, { status, error, total, page }];
 };

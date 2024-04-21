@@ -3,10 +3,12 @@ import * as api from '../consts/config';
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { CharactersReducer } from '../components/charactersList/charactersSlice';
+import { controlsReducer } from '../components/controls/controlsSlice';
 
 export const store = configureStore({
   reducer: {
     characters: CharactersReducer,
+    controls: controlsReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddlware) =>

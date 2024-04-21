@@ -7,5 +7,5 @@ export const selectCharactersInfo = (state: RootState) => ({
   count: state.characters.characters?.data.count,
 });
 
-export const selectAllCountries = (state: RootState) =>
+export const selectAllCharacters = (state: RootState) =>
   state.characters.characters?.data.results;

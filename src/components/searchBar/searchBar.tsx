@@ -1,7 +1,7 @@
 import SearchIcon from '@mui/icons-material/Search';
 import { Box, TextField } from '@mui/material';
 import doctorImg from '../../assets/docs-bg.jpg';
-// import { useState } from 'react';
+import marvelImg from '../../assets/marvel-logo.svg';
 import './searchBar.modules.scss';
 
 export const SearchBar = () => {
@@ -26,6 +26,7 @@ export const SearchBar = () => {
           variant="standard"
         />
       </Box>
+      <img src={marvelImg} alt="marvel logo" className="img__marvel" />
       <img src={doctorImg} alt="doctor" className="img" />
     </div>
   );

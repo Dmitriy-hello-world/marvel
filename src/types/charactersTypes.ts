@@ -75,6 +75,6 @@ export interface MarvelApiResponse {
     limit: number;
     total: number;
     count: number;
-    results: Character;
+    results: Character[];
   };
 }

@@ -4,7 +4,7 @@ import { Extra, Status } from '../../types/reduxPropsTypes';
 
 export const loadCharacters = createAsyncThunk<
   { data: MarvelApiResponse },
-  undefined,
+  number,
   {
     extra: Extra;
     state: { characters: CharactersSlice };
@@ -12,9 +12,9 @@ export const loadCharacters = createAsyncThunk<
   }
 >(
   '@@characters/load-characters',
-  async (_, { extra: { client, api }, rejectWithValue }) => {
+  async (offset, { extra: { client, api }, rejectWithValue }) => {
     try {
-      return client.get(api.GET_CHARACTERS);
+      return client.get(api.generateUrl(api.GET_CHARACTERS, offset));
     } catch (error) {
       if (error instanceof Error) {
         return rejectWithValue(error.message);
