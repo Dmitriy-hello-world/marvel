@@ -55,7 +55,7 @@ export const AppHeader = () => {
                 key={'2'}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                About
+                About Me
               </Button>
             </NavLink>
           </Box>
